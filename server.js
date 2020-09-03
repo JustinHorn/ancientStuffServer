@@ -1,15 +1,16 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 
-const users = require('./api/users');
-const orders = require('./api/orders');
-const errorHandler = require('./middleware/error');
+const cors = require("cors");
+const stuff = require("./api/stuff");
+const videos = require("./api/videos");
+const errorHandler = require("./middleware/error");
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-app.use('/users', users);
-app.use('/orders', orders);
+app.use("/stuff", stuff);
+app.use("/videos", videos);
 app.use(errorHandler);
 
-app.listen('3000', () => console.log('connected'));
-
+app.listen("4000", () => console.log("connected"));
